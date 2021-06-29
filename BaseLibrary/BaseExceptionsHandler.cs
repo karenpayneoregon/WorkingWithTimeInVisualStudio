@@ -25,13 +25,8 @@ namespace BaseLibrary
         /// <summary>
         /// Indicates if there was a sql related exception
         /// </summary>
-        public bool HasSqlException
-        {
-            get
-            {
-                return LastException is SqlException;
-            }
-        }
+        public bool HasSqlException => LastException is SqlException;
+
         /// <summary>
         /// If you don't need the entire exception as in 
         /// LastException this provides just the text of the exception

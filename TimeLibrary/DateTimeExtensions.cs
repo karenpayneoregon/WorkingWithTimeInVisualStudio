@@ -16,20 +16,17 @@ namespace TimeLibrary
         /// <remarks>
         /// Intended to be used when the date part does not matter
         /// </remarks>
-        public static DateTime ToDateTime(this TimeSpan sender)
-        {
-            return DateTime.ParseExact(sender.Formatted("hh:mm"), "H:mm", null, DateTimeStyles.None);
-        }
+        public static DateTime ToDateTime(this TimeSpan sender) => 
+            DateTime.ParseExact(sender.Formatted("hh:mm"), "H:mm", null, DateTimeStyles.None);
+
         /// <summary>
         /// Format a TimeSpan with AM PM
         /// </summary>
         /// <param name="sender">TimeSpan to format</param>
         /// <param name="format">Optional format</param>
         /// <returns></returns>
-        public static string Formatted(this TimeSpan sender, string format = "hh:mm tt")
-        {
-            return DateTime.Today.Add(sender).ToString(format);
-        }
+        public static string Formatted(this TimeSpan sender, string format = "hh:mm tt") => 
+            DateTime.Today.Add(sender).ToString(format);
 
         /// <summary>
         /// Create TimeSpan with hour and minutes
@@ -37,10 +34,8 @@ namespace TimeLibrary
         /// <param name="hours"></param>
         /// <param name="minutes"></param>
         /// <returns></returns>
-        public static TimeSpan TimeSpan(int hours, int minutes)
-        {
-            return new TimeSpan(hours,minutes,0);
-        }
+        public static TimeSpan TimeSpan(int hours, int minutes) => 
+            new TimeSpan(hours,minutes,0);
 
         /// <summary>
         /// Returns a valid TimeSpan from string if string
@@ -98,10 +93,9 @@ namespace TimeLibrary
         /// <param name="startTimeSpan"></param>
         /// <param name="endTimeSpan"></param>
         /// <returns></returns>
-        public static bool IsValidStartTime(this TimeSpan startTimeSpan, TimeSpan endTimeSpan)
-        {
-            return endTimeSpan.Hours > startTimeSpan.Hours;
-        }
+        public static bool IsValidStartTime(this TimeSpan startTimeSpan, TimeSpan endTimeSpan) => 
+            endTimeSpan.Hours > startTimeSpan.Hours;
+
         /// <summary>
         /// Given a date time round down to the closest quarter
         /// </summary> 
@@ -128,38 +122,38 @@ namespace TimeLibrary
         /// </summary>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public static DateTime TruncateToHourStart(this DateTime dateTime)
-        {
-            return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0);
-        }
+        public static DateTime TruncateToHourStart(this DateTime dateTime) => 
+            new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, 0, 0);
+
         /// <summary>
         /// Truncate to current minute
         /// </summary>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public static DateTime TruncateToMinuteStart(this DateTime dateTime)
-        {
-            return new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0);
-        }
+        public static DateTime TruncateToMinuteStart(this DateTime dateTime) => 
+            new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, dateTime.Hour, dateTime.Minute, 0);
+
         /// <summary>
         /// Combine date and time
         /// </summary>
         /// <param name="day">Valid Initialized DateTime</param>
         /// <param name="time">Valid initialized TimeSpan</param>
         /// <returns></returns>
-        public static DateTime At(this DateTime day, TimeSpan time)
-        {
-            return new DateTime(day.Year, day.Month, day.Day, 0, 0, 0).Add(time);
-        }
+        public static DateTime At(this DateTime day, TimeSpan time) => 
+            new DateTime(day.Year, day.Month, day.Day, 0, 0, 0).Add(time);
+
         /// <summary>
         /// Combine date and time
         /// </summary>
         /// <param name="day">Valid Initialized DateTime</param>
         /// <param name="time">Valid initialized TimeSpan</param>
         /// <returns></returns>
-        public static DateTime And(this DateTime day, TimeSpan time)
+        public static DateTime And(this DateTime day, TimeSpan time) => day.Add(time);
+
+        public static TimeSpan ToTimeSpan(this string sender)
         {
-            return day.Add(time);
+            DateTime.TryParseExact(sender, "HH:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out var dateTime);
+            return dateTime.TimeOfDay;
         }
     }
 }

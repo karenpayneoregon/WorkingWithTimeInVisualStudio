@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Design;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
 
@@ -55,8 +57,8 @@ namespace TimeLibrary
         {
             if (TimeSpan.TryParse(pTime, out var time)) 
             {
-                var dateTimeime = DateTime.Today.Add(time);
-                var displayTime = dateTimeime.ToString("hh:mm tt");
+                var dateTime = DateTime.Today.Add(time);
+                var displayTime = dateTime.ToString("hh:mm tt");
                 var index = FindString(displayTime);
                 if (index > -1)
                 {
@@ -86,7 +88,7 @@ namespace TimeLibrary
         [Browsable(false)]
         public int Hours => TimeSpan.Hours;
 
-        private int _Minutes;
+        private int _minutes;
         /// <summary>
         /// Get minutes for selected item
         /// </summary>
@@ -140,10 +142,7 @@ namespace TimeLibrary
                 var hours = new Hours();
                 Items.AddRange(hours.Range(Increment));
             }
-            get
-            {
-                return _increment;
-            }
+            get => _increment;
         }
 
         private static string _hour = "";
@@ -156,10 +155,7 @@ namespace TimeLibrary
                 _hour = value;
                 SetHour();
             }
-            get
-            {
-                return _hour;
-            }
+            get => _hour;
         }
         private bool SetHour()
         {
@@ -180,7 +176,9 @@ namespace TimeLibrary
             {
                 SelectedIndex = 0;
             }
+            
             return success;
+            
         }
         private void TimeComboBox_VisibleChanged(object sender, EventArgs e)
         {
@@ -188,6 +186,23 @@ namespace TimeLibrary
             {
                 SetHour();
                 _shown = true;
+            }
+        }
+
+        public void ItemsToTimeSpan()
+        {
+            var test = Items.OfType<string>();
+            
+            foreach (var timeItem in Items.OfType<string>())
+            {
+                DateTime dt;
+                if (DateTime.TryParseExact(timeItem, "HH:mm tt", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
+                {
+                    TimeSpan time = dt.TimeOfDay;
+                    Console.WriteLine($"{timeItem} - {time}");
+                }
+
+
             }
         }
 

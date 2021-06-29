@@ -39,7 +39,6 @@ namespace WindowsFormsApp1
             this.TimeSpanHourMinutes = new System.Windows.Forms.Button();
             this.SetCurrentFromStringButton = new System.Windows.Forms.Button();
             this.txtTime = new System.Windows.Forms.TextBox();
-            this.timeComboBox1 = new TimeLibrary.TimeComboBox();
             this.HoursDomainUpDown = new System.Windows.Forms.DomainUpDown();
             this.lblValid = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -48,7 +47,11 @@ namespace WindowsFormsApp1
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.RemoveHoursButton = new System.Windows.Forms.Button();
+            this.timeComboBox1 = new TimeLibrary.TimeComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // UpdateStartTimeButton
@@ -140,6 +143,89 @@ namespace WindowsFormsApp1
             this.txtTime.TabIndex = 8;
             this.txtTime.Text = "08:45";
             // 
+            // HoursDomainUpDown
+            // 
+            this.HoursDomainUpDown.Location = new System.Drawing.Point(358, 49);
+            this.HoursDomainUpDown.Name = "HoursDomainUpDown";
+            this.HoursDomainUpDown.Size = new System.Drawing.Size(115, 20);
+            this.HoursDomainUpDown.TabIndex = 2;
+            this.HoursDomainUpDown.Text = "domainUpDown1";
+            // 
+            // lblValid
+            // 
+            this.lblValid.AutoSize = true;
+            this.lblValid.Location = new System.Drawing.Point(27, 273);
+            this.lblValid.Name = "lblValid";
+            this.lblValid.Size = new System.Drawing.Size(96, 13);
+            this.lblValid.TabIndex = 8;
+            this.lblValid.Text = "validate end time ?";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(342, 238);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(131, 20);
+            this.dateTimePicker1.TabIndex = 9;
+            // 
+            // dateTimeValueButton
+            // 
+            this.dateTimeValueButton.Location = new System.Drawing.Point(494, 235);
+            this.dateTimeValueButton.Name = "dateTimeValueButton";
+            this.dateTimeValueButton.Size = new System.Drawing.Size(75, 23);
+            this.dateTimeValueButton.TabIndex = 10;
+            this.dateTimeValueButton.Text = "Value";
+            this.dateTimeValueButton.UseVisualStyleBackColor = true;
+            this.dateTimeValueButton.Click += new System.EventHandler(this.dateTimeValueButton_Click);
+            // 
+            // domainCurrentValueButton
+            // 
+            this.domainCurrentValueButton.Location = new System.Drawing.Point(494, 49);
+            this.domainCurrentValueButton.Name = "domainCurrentValueButton";
+            this.domainCurrentValueButton.Size = new System.Drawing.Size(75, 23);
+            this.domainCurrentValueButton.TabIndex = 3;
+            this.domainCurrentValueButton.Text = "Value";
+            this.domainCurrentValueButton.UseVisualStyleBackColor = true;
+            this.domainCurrentValueButton.Click += new System.EventHandler(this.domainCurrentValueButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(345, 222);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "DateTimePicker";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(358, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "DomainUpDown";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(274, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "ComboBox";
+            // 
+            // RemoveHoursButton
+            // 
+            this.RemoveHoursButton.Location = new System.Drawing.Point(12, 16);
+            this.RemoveHoursButton.Name = "RemoveHoursButton";
+            this.RemoveHoursButton.Size = new System.Drawing.Size(222, 23);
+            this.RemoveHoursButton.TabIndex = 14;
+            this.RemoveHoursButton.Text = "Remove hours";
+            this.RemoveHoursButton.UseVisualStyleBackColor = true;
+            this.RemoveHoursButton.Click += new System.EventHandler(this.RemoveHoursButton_Click);
+            // 
             // timeComboBox1
             // 
             this.timeComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -147,6 +233,198 @@ namespace WindowsFormsApp1
             this.timeComboBox1.Increment = TimeLibrary.TimeIncrement.Quarterly;
             this.timeComboBox1.IntegralHeight = false;
             this.timeComboBox1.Items.AddRange(new object[] {
+            "12:00 AM",
+            "12:15 AM",
+            "12:30 AM",
+            "12:45 AM",
+            "01:00 AM",
+            "01:15 AM",
+            "01:30 AM",
+            "01:45 AM",
+            "02:00 AM",
+            "02:15 AM",
+            "02:30 AM",
+            "02:45 AM",
+            "03:00 AM",
+            "03:15 AM",
+            "03:30 AM",
+            "03:45 AM",
+            "04:00 AM",
+            "04:15 AM",
+            "04:30 AM",
+            "04:45 AM",
+            "05:00 AM",
+            "05:15 AM",
+            "05:30 AM",
+            "05:45 AM",
+            "06:00 AM",
+            "06:15 AM",
+            "06:30 AM",
+            "06:45 AM",
+            "07:00 AM",
+            "07:15 AM",
+            "07:30 AM",
+            "07:45 AM",
+            "08:00 AM",
+            "08:15 AM",
+            "08:30 AM",
+            "08:45 AM",
+            "09:00 AM",
+            "09:15 AM",
+            "09:30 AM",
+            "09:45 AM",
+            "10:00 AM",
+            "10:15 AM",
+            "10:30 AM",
+            "10:45 AM",
+            "11:00 AM",
+            "11:15 AM",
+            "11:30 AM",
+            "11:45 AM",
+            "12:00 PM",
+            "12:15 PM",
+            "12:30 PM",
+            "12:45 PM",
+            "01:00 PM",
+            "01:15 PM",
+            "01:30 PM",
+            "01:45 PM",
+            "02:00 PM",
+            "02:15 PM",
+            "02:30 PM",
+            "02:45 PM",
+            "03:00 PM",
+            "03:15 PM",
+            "03:30 PM",
+            "03:45 PM",
+            "04:00 PM",
+            "04:15 PM",
+            "04:30 PM",
+            "04:45 PM",
+            "05:00 PM",
+            "05:15 PM",
+            "05:30 PM",
+            "05:45 PM",
+            "06:00 PM",
+            "06:15 PM",
+            "06:30 PM",
+            "06:45 PM",
+            "07:00 PM",
+            "07:15 PM",
+            "07:30 PM",
+            "07:45 PM",
+            "08:00 PM",
+            "08:15 PM",
+            "08:30 PM",
+            "08:45 PM",
+            "09:00 PM",
+            "09:15 PM",
+            "09:30 PM",
+            "09:45 PM",
+            "10:00 PM",
+            "10:15 PM",
+            "10:30 PM",
+            "10:45 PM",
+            "11:00 PM",
+            "11:15 PM",
+            "11:30 PM",
+            "11:45 PM",
+            "12:00 AM",
+            "12:15 AM",
+            "12:30 AM",
+            "12:45 AM",
+            "01:00 AM",
+            "01:15 AM",
+            "01:30 AM",
+            "01:45 AM",
+            "02:00 AM",
+            "02:15 AM",
+            "02:30 AM",
+            "02:45 AM",
+            "03:00 AM",
+            "03:15 AM",
+            "03:30 AM",
+            "03:45 AM",
+            "04:00 AM",
+            "04:15 AM",
+            "04:30 AM",
+            "04:45 AM",
+            "05:00 AM",
+            "05:15 AM",
+            "05:30 AM",
+            "05:45 AM",
+            "06:00 AM",
+            "06:15 AM",
+            "06:30 AM",
+            "06:45 AM",
+            "07:00 AM",
+            "07:15 AM",
+            "07:30 AM",
+            "07:45 AM",
+            "08:00 AM",
+            "08:15 AM",
+            "08:30 AM",
+            "08:45 AM",
+            "09:00 AM",
+            "09:15 AM",
+            "09:30 AM",
+            "09:45 AM",
+            "10:00 AM",
+            "10:15 AM",
+            "10:30 AM",
+            "10:45 AM",
+            "11:00 AM",
+            "11:15 AM",
+            "11:30 AM",
+            "11:45 AM",
+            "12:00 PM",
+            "12:15 PM",
+            "12:30 PM",
+            "12:45 PM",
+            "01:00 PM",
+            "01:15 PM",
+            "01:30 PM",
+            "01:45 PM",
+            "02:00 PM",
+            "02:15 PM",
+            "02:30 PM",
+            "02:45 PM",
+            "03:00 PM",
+            "03:15 PM",
+            "03:30 PM",
+            "03:45 PM",
+            "04:00 PM",
+            "04:15 PM",
+            "04:30 PM",
+            "04:45 PM",
+            "05:00 PM",
+            "05:15 PM",
+            "05:30 PM",
+            "05:45 PM",
+            "06:00 PM",
+            "06:15 PM",
+            "06:30 PM",
+            "06:45 PM",
+            "07:00 PM",
+            "07:15 PM",
+            "07:30 PM",
+            "07:45 PM",
+            "08:00 PM",
+            "08:15 PM",
+            "08:30 PM",
+            "08:45 PM",
+            "09:00 PM",
+            "09:15 PM",
+            "09:30 PM",
+            "09:45 PM",
+            "10:00 PM",
+            "10:15 PM",
+            "10:30 PM",
+            "10:45 PM",
+            "11:00 PM",
+            "11:15 PM",
+            "11:30 PM",
+            "11:45 PM",
             "12:00 AM",
             "12:15 AM",
             "12:30 AM",
@@ -827,85 +1105,23 @@ namespace WindowsFormsApp1
             this.timeComboBox1.TabIndex = 1;
             this.timeComboBox1.Time = "08:15 AM";
             // 
-            // HoursDomainUpDown
+            // groupBox1
             // 
-            this.HoursDomainUpDown.Location = new System.Drawing.Point(358, 49);
-            this.HoursDomainUpDown.Name = "HoursDomainUpDown";
-            this.HoursDomainUpDown.Size = new System.Drawing.Size(115, 20);
-            this.HoursDomainUpDown.TabIndex = 2;
-            this.HoursDomainUpDown.Text = "domainUpDown1";
-            // 
-            // lblValid
-            // 
-            this.lblValid.AutoSize = true;
-            this.lblValid.Location = new System.Drawing.Point(27, 273);
-            this.lblValid.Name = "lblValid";
-            this.lblValid.Size = new System.Drawing.Size(96, 13);
-            this.lblValid.TabIndex = 8;
-            this.lblValid.Text = "validate end time ?";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(342, 238);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowUpDown = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(131, 20);
-            this.dateTimePicker1.TabIndex = 9;
-            // 
-            // dateTimeValueButton
-            // 
-            this.dateTimeValueButton.Location = new System.Drawing.Point(494, 235);
-            this.dateTimeValueButton.Name = "dateTimeValueButton";
-            this.dateTimeValueButton.Size = new System.Drawing.Size(75, 23);
-            this.dateTimeValueButton.TabIndex = 10;
-            this.dateTimeValueButton.Text = "Value";
-            this.dateTimeValueButton.UseVisualStyleBackColor = true;
-            this.dateTimeValueButton.Click += new System.EventHandler(this.dateTimeValueButton_Click);
-            // 
-            // domainCurrentValueButton
-            // 
-            this.domainCurrentValueButton.Location = new System.Drawing.Point(494, 49);
-            this.domainCurrentValueButton.Name = "domainCurrentValueButton";
-            this.domainCurrentValueButton.Size = new System.Drawing.Size(75, 23);
-            this.domainCurrentValueButton.TabIndex = 3;
-            this.domainCurrentValueButton.Text = "Value";
-            this.domainCurrentValueButton.UseVisualStyleBackColor = true;
-            this.domainCurrentValueButton.Click += new System.EventHandler(this.domainCurrentValueButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(345, 222);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "DateTimePicker";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(358, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "DomainUpDown";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(274, 34);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "ComboBox";
+            this.groupBox1.Controls.Add(this.RemoveHoursButton);
+            this.groupBox1.Location = new System.Drawing.Point(10, 301);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(267, 48);
+            this.groupBox1.TabIndex = 15;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Not discussed in article";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(615, 297);
+            this.ClientSize = new System.Drawing.Size(615, 358);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -927,6 +1143,7 @@ namespace WindowsFormsApp1
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Time controls";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -951,6 +1168,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button RemoveHoursButton;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

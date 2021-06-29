@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
 using TimeLibrary;
@@ -82,10 +85,6 @@ namespace WindowsFormsApp1
 
             lblValid.Text = person.IsValidEndTime ? $"Valid end time: {person.EndTime.Formatted()}" : $"Invalid end time: {person.EndTime.Formatted()}";
 
-            
-
-
-
         }
         /// <summary>
         /// Update start time of current person in DataGridView
@@ -163,6 +162,37 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show(dateTimePicker1.Time().Formatted());
         }
+
+        /// <summary>
+        /// Inspired by
+        /// https://stackoverflow.com/questions/68180488/remove-comobox-items-between-2-indexs-c-sharp
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveHoursButton_Click(object sender, EventArgs e)
+        {
+            
+            var hours = new HoursItems();
+            hours.Range(TimeIncrement.Quarterly);
+
+            Console.WriteLine(hours.HourItems.Count);
+
+            var newHours = new List<HourItem>();
+            foreach (var hourItem in hours.HourItems)
+            {
+                // times below would be from user selections
+                if (!hourItem.TimeSpan.Between("07:45 AM".ToTimeSpan(), "10:45 AM".ToTimeSpan()))
+                {
+                    newHours.Add(hourItem);
+                }
+            }
+
+            hours.HourItems = newHours;
+            Console.WriteLine(hours.HourItems.Count);
+
+        }
+
+        
     }
 
 }
