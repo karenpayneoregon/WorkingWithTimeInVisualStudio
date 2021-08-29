@@ -182,7 +182,7 @@ namespace WindowsFormsApp1.Classes
                 using (var cmd = new SqlCommand() {Connection = cn, CommandText = updateStatement })
                 {
                     cmd.Parameters.AddWithValue("@Id", id);
-                    cmd.Parameters.AddWithValue("@TimeValue", startTime);
+                    cmd.Parameters.Add("@TimeValue", SqlDbType.Time).Value = startTime;
                     cn.Open();
                     success = cmd.ExecuteNonQuery() == 1;
                 }

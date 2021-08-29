@@ -100,9 +100,8 @@ namespace WindowsFormsApp1
             var person = (Person) _bindingSource.Current;
             var startTime = person.StartTime;
             
-            var validate = timeComboBox1.TimeSpan.IsValidStartTime(person.EndTime);
 
-            if (validate)
+            if (timeComboBox1.TimeSpan.IsValidStartTime(person.EndTime))
             {
                 var success = _dataOperations.UpdateStartTime(person.Id, timeComboBox1.TimeSpan);
                 if (!success)
@@ -118,7 +117,7 @@ namespace WindowsFormsApp1
             }
         }
         /// <summary>
-        /// Show currenly select TimeSpan formatted via a language extension
+        /// Show currently select TimeSpan formatted via a language extension
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
