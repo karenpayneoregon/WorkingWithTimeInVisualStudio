@@ -77,6 +77,8 @@ namespace TimeLibrary
             return new TimeSpan(hour, min, 0);
         }
 
+
+
         /// <summary>
         /// Is end time prior to start time
         /// </summary>
